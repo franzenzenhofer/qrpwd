@@ -19,9 +19,9 @@ Pwd: test - Decode here: https://qrpwd.franzai.com/
 
 This project, [qrpwd](https://github.com/franzenzenhofer/qrpwd), was inspired by the need for a secure and convenient way to store 2-factor authentication (2FA) backup codes. The tool allows you to encode and decode information in QR codes, password-protected for added security. Additionally, an [online decoder](https://franzenzenhofer.github.io/qrpwd/) is available for decoding when you're away from your computer or in case of loss.
 
-The idea is to store the encoded QR codes containing the 2FA backup codes in plain sight, such as in an image library, repo, or even as a WhatsApp message to yourself. This approach leverages the fact that images are often backed up multiple times across various locations, ensuring that the 2FA backup codes remain accessible.
+The idea is to store the encoded QR codes containing the 2FA backup codes in plain sight, such as in an image library, repo, or even as a WhatsApp message to yourself. This approach leverages the fact that images are often backed up multiple times across various locations, ensuring that the 2FA backup codes remain accessible. Additonal image handling and retrieval is much better in mobile devices for image than for other filetypes.
 
-We encourage security experts to share their thoughts and opinions on this method's effectiveness and potential improvements.
+I encourage security experts to share their thoughts and opinions on this method's effectiveness and potential improvements.
 
 ---
 
