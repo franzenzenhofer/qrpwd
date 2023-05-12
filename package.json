@@ -1,0 +1,24 @@
+{
+  "name": "qrpwd",
+  "version": "1.0.0",
+  "description": "",
+  "main": "qrpwd.js",
+  "type": "module",
+  "bin": {
+    "qrpwd": "./qrpwd.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@nuintun/qrcode": "^3.3.2",
+    "crypto-js": "^4.1.1",
+    "jimp": "^0.22.8",
+    "qrcode": "^1.5.3",
+    "qrcode-reader": "^1.0.4",
+    "yargs": "^17.7.2"
+  }
+}
