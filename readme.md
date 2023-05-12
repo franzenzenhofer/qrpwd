@@ -1,9 +1,9 @@
 # qrpwd - Encode to QR-Code
 
+A simple command line tool to encode and decode textual information with strong encryption using a given password in a QR code.
+
 ![Test Image](test.png)
 Pwd: test - Decode here: https://qrpwd.franzai.com/
-
-A simple command line tool to encode and decode textual information with strong encryption using a given password in a QR code.
 
 ## Installation
 
