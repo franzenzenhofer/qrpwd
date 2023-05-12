@@ -4,8 +4,12 @@ A simple command line tool to encode and decode textual information with strong 
 
 ## Installation
 
+To install qrpwd, follow these steps:
+
 1. Clone the repository or download the source files.
-2. Navigate to the project directory and run `npm install`.
+2. Navigate to the project directory.
+3. Run `npm install` to install the dependencies.
+4. Run `npm link` to make it a global command line tool.
 
 ## Usage
 
@@ -13,22 +17,22 @@ A simple command line tool to encode and decode textual information with strong 
 
 To encode a message:
 
-```
-node qrpwd.js encode -m "your message" -p "your_password" -o output.png
+```bash
+qrpwd encode -m "your message" -p "your_password" -o output.png
 ```
 
 To encode a file:
 
-```
-node qrpwd.js encode -f input.txt -p "your_password" -o output.png
+```bash
+qrpwd encode -f input.txt -p "your_password" -o output.png
 ```
 
 ### Decode
 
 To decode an encrypted QR code:
 
-```
-node qrpwd.js decode -i input.png -p "your_password"
+```bash
+qrpwd decode -i input.png -p "your_password"
 ```
 
 ## Parameters
@@ -38,3 +42,7 @@ node qrpwd.js decode -i input.png -p "your_password"
 - `-p` or `--password`: The password to encrypt/decrypt the data (required).
 - `-o` or `--output`: The output file for the QR code (default: timestamped .png file).
 - `-i` or `--input`: The input QR code image file (required for decoding).
+
+For more information, refer to the [GitHub repository](https://github.com/franzenzenhofer/qrpwd).
+
+To try the qrpwd Online Decoder, visit the [online decode page](https://franzenzenhofer.github.io/qrpwd/).
