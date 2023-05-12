@@ -15,6 +15,12 @@ export const cli = (main) => {
           type: 'string',
           description: 'Message to encode',
         })
+        .option('d', {
+          alias: 'debug',
+          type: 'boolean',
+          default: false,
+          description: 'Enable debug mode for error reporting',
+        })
         .option('f', {
           alias: 'file',
           type: 'string',
@@ -29,7 +35,7 @@ export const cli = (main) => {
           alias: 'silent',
           type: 'boolean',
           default: false,
-          description: 'Disable output messages and file opening',
+          description: '',
         })
         .option('o', {
           alias: 'output',
@@ -58,6 +64,17 @@ export const cli = (main) => {
           demandOption: true,
           description: 'Input QR code file',
         })
+        .option('f', {
+          alias: 'file',
+          type: 'string',
+          description: 'Input QR code file',
+        })
+        .option('d', {
+          alias: 'debug',
+          type: 'boolean',
+          default: false,
+          description: 'Enable debug mode for error reporting',
+        })
         .option('p', {
           alias: 'password',
           type: 'string',
@@ -67,7 +84,7 @@ export const cli = (main) => {
           alias: 'silent',
           type: 'boolean',
           default: false,
-          description: 'Disable output messages and file opening',
+          description: '',
         })
         .option('o', {
           alias: 'output',

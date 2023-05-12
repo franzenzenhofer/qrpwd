@@ -2,6 +2,7 @@
 import fs from 'fs/promises'; // Use fs/promises for async file operations
 import { encode } from './encode.js';
 import { decode } from './decode.js';
+import { signQRCode } from './sign.js';
 import { testDecode } from './decode-test.js';
 import { cli } from './cli.js';
 import path from 'path';
@@ -9,21 +10,23 @@ import { setTimeout } from 'timers/promises';
 
 export const main = async (args) => {
   const { _, m, f, p, s, o, u, i } = args;
+  const debug = args.d || args.debug;
   const password = u ? '' : p;
 
   
-  const handleEncode = async (data, outputPath, silent, filename) => {
+  const handleEncode = async (data, outputPath, silent, filename, debug) => {
     let attempts = 0;
     let qrFile;
     let success = false;
   
-    while (attempts < 10 && !success) {
+    while (attempts < 20 && !success) {
       qrFile = await encode(data, password, outputPath, silent, filename);
-      await setTimeout(500);
+      await signQRCode(outputPath, outputPath, outputPath); 
+      await setTimeout(200);
   
-      success = await testDecode(data, filename, password, outputPath);
+      success = await testDecode(data, filename, password, outputPath, debug);
       if (success) {
-        success = await testDecode(data, filename, password, outputPath); // Repeat the test
+        success = await testDecode(data, filename, password, outputPath, debug); // Repeat the test
       }
   
       if (!success) {
@@ -35,7 +38,7 @@ export const main = async (args) => {
     if (success) {
       console.log('Decode test passed successfully');
     } else {
-      console.error('Error during decode test, giving up after 10 attempts');
+      console.error('Error during decode test, giving up after 20 attempts');
     }
   };
   
@@ -43,11 +46,11 @@ export const main = async (args) => {
   if (_[0] === 'encode') {
     if (m) {
       const filename = o.replace('.png', '.txt');
-      await handleEncode(m, o, s, filename);
+      await handleEncode(m, o, s, filename, debug);
     } else if (f) {
       try {
         const d = await fs.readFile(f, 'utf8');
-        await handleEncode(d, o, s, path.basename(f));
+        await handleEncode(d, o, s, path.basename(f), debug);
       } catch (e) {
         console.error('Error reading file:', e.message);
       }
@@ -55,7 +58,13 @@ export const main = async (args) => {
       console.error('You must provide a message or a file to encode');
     }
   } else if (_[0] === 'decode') {
-    await decode(i, p || '', o, s);
+    if (i) {
+      await decode(i, p || '', o, s, false, debug);
+    } else if (f) {
+      await decode(f, p || '', o, s, false, debug);
+    } else {
+      console.error('You must provide an input file using -i or -f');
+    }
   }
 };
 

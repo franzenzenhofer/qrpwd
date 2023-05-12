@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>qrpwd Online Decoder</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
+
+h1 {
+  margin-top: 0;
+}
+
+input[type="file"],
+input[type="password"],
+button {
+  display: block;
+  margin: 0.5em 0;
+}
+
+.container {
+  background-color: white;
+  padding: 2em;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+}
+
+.results {
+  margin-top: 1em;
+}
+</style>
+<script src="https://unpkg.com/@zxing/library@0.20.0/umd/index.min.js"></script>
+<script src="https://unpkg.com/crypto-js@4.1.1/crypto-js.js"></script>
+<script type="module" src="./decode-browser.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>qrpwd Online Decoder</h1>
+    <input type="file" id="input-file">
+    <input type="password" id="password" placeholder="Password (optional)">
+    <button onclick="handleDecode()">Decode</button>
+    <div class="results">
+      <p id="result-filename"></p>
+      <pre id="result-message"></pre>
+    </div>
+  </div>
+</body>
