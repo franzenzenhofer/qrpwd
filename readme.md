@@ -7,7 +7,7 @@ A simple command line tool to encode and decode textual information with strong 
 
 Pwd: test - Decode here: https://qrpwd.franzai.com/
 
-    ## Installation
+ ## Installation
 
 To install qrpwd, follow these steps:
 
