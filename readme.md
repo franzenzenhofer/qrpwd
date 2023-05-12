@@ -1,5 +1,7 @@
 # qrpwd - Encode to QR-Code
 
+![Test Image](test.png)
+
 A simple command line tool to encode and decode textual information with strong encryption using a given password in a QR code.
 
 ## Installation
