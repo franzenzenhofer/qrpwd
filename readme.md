@@ -1,31 +1,8 @@
 # qrpwd - Encode to QR-Code
 
-A simple command line tool to encode and decode textual information with strong encryption using a given password in a QR code.
+qrpwd is a command-line tool that allows you to encode and decode textual information with strong encryption using a given password in a QR code. The tool is designed to be secure and convenient, making it ideal for storing sensitive information such as 2-factor authentication (2FA) backup codes.
 
-![Test Image](test.png)
-
-
-Pwd: test - Decode here: https://qrpwd.franzai.com/
-
-
-- Coded by ChatGpt V4
-- Directed by Franz Enzenhofer fe at f19n dot c o m 
-
-
-
----
-
-**Project Motivation**
-
-This project, [qrpwd](https://github.com/franzenzenhofer/qrpwd), was inspired by the need for a secure and convenient way to store 2-factor authentication (2FA) backup codes. The tool allows you to encode and decode information in QR codes, password-protected for added security. Additionally, an [online decoder](https://franzenzenhofer.github.io/qrpwd/) is available for decoding when you're away from your computer or in case of loss.
-
-The idea is to store the encoded QR codes containing the 2FA backup codes in plain sight, such as in an image library, repo, or even as a WhatsApp message to yourself. This approach leverages the fact that images are often backed up multiple times across various locations, ensuring that the 2FA backup codes remain accessible. Additonal image handling and retrieval is much better in mobile devices for image than for other filetypes.
-
-I encourage security experts to share their thoughts and opinions on this method's effectiveness and potential improvements.
-
----
-
- ## Installation
+## Installation
 
 To install qrpwd, follow these steps:
 
@@ -65,7 +42,20 @@ qrpwd decode -i input.png -p "your_password"
 - `-p` or `--password`: The password to encrypt/decrypt the data (required).
 - `-o` or `--output`: The output file for the QR code (default: timestamped .png file).
 - `-i` or `--input`: The input QR code image file (required for decoding).
+- `-s` or `--silent`: Suppress console output (default: false).
+- `-u` or `--unprotected`: Generate an unprotected QR code (default: false).
+- `-d` or `--debug`: Enable debug mode (default: false).
 
 For more information, refer to the [GitHub repository](https://github.com/franzenzenhofer/qrpwd).
 
-To try the qrpwd Online Decoder, visit the [online decode page](https://franzenzenhofer.github.io/qrpwd/).
+## Use Cases
+
+Here are some possible use cases for qrpwd:
+
+- Creating QR codes for events or promotions that require a password for access.
+- Generating QR codes for Wi-Fi networks that require a password for access.
+- Creating QR codes for password protected contact information that can be easily shared with others.
+- Generating QR codes for URLs that require a password for access.
+- Creating QR codes for loyalty programs that require a password for access.
+- Generating QR codes for surveys or feedback forms that require a password for access.
+

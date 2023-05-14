@@ -9,48 +9,46 @@ import path from 'path';
 import { setTimeout } from 'timers/promises';
 
 export const main = async (args) => {
-  const { _, m, f, p, s, o, u, i } = args;
-  const debug = args.d || args.debug;
-  const password = u ? '' : p;
+  const { _, message, input, password, silent, output, debug } = args;
+ const handleEncode = async (data, outputPath, silent, filename, debug) => {
+  let attempts = 0;
+  let qrFile;
+  let success = false;
 
-  
-  const handleEncode = async (data, outputPath, silent, filename, debug) => {
-    let attempts = 0;
-    let qrFile;
-    let success = false;
-  
-    while (attempts < 20 && !success) {
-      qrFile = await encode(data, password, outputPath, silent, filename);
-      await signQRCode(outputPath, outputPath, outputPath); 
-      await setTimeout(200);
-  
-      success = await testDecode(data, filename, password, outputPath, debug);
-      if (success) {
-        success = await testDecode(data, filename, password, outputPath, debug); // Repeat the test
-      }
-  
-      if (!success) {
-        console.error('Error during decode test, retrying...');
-        attempts++;
-      }
-    }
-  
+  while (attempts < 20 && !success) {
+    qrFile = await encode(data, password, outputPath, silent, filename, debug);
+    await signQRCode(outputPath, outputPath, outputPath);
+    await setTimeout(200);
+
+    success = await testDecode(data, filename, password, outputPath, debug);
     if (success) {
-      console.log('Decode test passed successfully');
-    } else {
-      console.error('Error during decode test, giving up after 20 attempts');
+      success = await testDecode(data, filename, password, outputPath, debug); // Repeat the test
     }
-  };
+
+    if (!success) {
+      if (debug) {
+        console.error('Error during decode test, retrying...');
+      }
+      attempts++;
+    }
+  }
+
+  if (success) {
+    console.log('Decode test passed successfully');
+  } else {
+    console.error('Error during decode test, giving up after 20 attempts');
+  }
+};
   
 
   if (_[0] === 'encode') {
-    if (m) {
-      const filename = o.replace('.png', '.txt');
-      await handleEncode(m, o, s, filename, debug);
-    } else if (f) {
+    if (message) {
+      const filename = output.replace('.png', '.txt');
+      await handleEncode(message, output, silent, filename, debug);
+    } else if (input) {
       try {
-        const d = await fs.readFile(f, 'utf8');
-        await handleEncode(d, o, s, path.basename(f), debug);
+        const d = await fs.readFile(input, 'utf8');
+        await handleEncode(d, output, silent, path.basename(input), debug);
       } catch (e) {
         console.error('Error reading file:', e.message);
       }
@@ -58,12 +56,10 @@ export const main = async (args) => {
       console.error('You must provide a message or a file to encode');
     }
   } else if (_[0] === 'decode') {
-    if (i) {
-      await decode(i, p || '', o, s, false, debug);
-    } else if (f) {
-      await decode(f, p || '', o, s, false, debug);
+    if (input) {
+      await decode(input, password || '', output, silent, false, debug);
     } else {
-      console.error('You must provide an input file using -i or -f');
+      console.error('You must provide an input file using -i');
     }
   }
 };

@@ -21,10 +21,10 @@ export const cli = (main) => {
           default: false,
           description: 'Enable debug mode for error reporting',
         })
-        .option('f', {
-          alias: 'file',
+        .option('i', {
+          alias: 'input',
           type: 'string',
-          description: 'File to encode',
+          description: 'Input file to encode',
         })
         .option('p', {
           alias: 'password',
@@ -62,11 +62,6 @@ export const cli = (main) => {
           alias: 'input',
           type: 'string',
           demandOption: true,
-          description: 'Input QR code file',
-        })
-        .option('f', {
-          alias: 'file',
-          type: 'string',
           description: 'Input QR code file',
         })
         .option('d', {

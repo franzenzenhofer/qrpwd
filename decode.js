@@ -53,6 +53,5 @@ export const decode = async (i, pw, o, silent, test_mode = false, debug = false)
     } else {
       console.error('Error decoding data');
     }
-    
   }
 };
