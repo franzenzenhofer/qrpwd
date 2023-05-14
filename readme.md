@@ -4,6 +4,8 @@
 
 # qrpwd - Encode to QR-Code
 
+Online tool: <a href="https://qrpwd.franzai.com/#encode">Encode</a> - <a href="https://qrpwd.franzai.com/#dncode">Decode</a>
+
 qrpwd is a command-line tool that allows you to encode and decode textual information with strong encryption using a given password in a QR code. The tool is designed to be secure and convenient, making it ideal for storing sensitive information such as 2-factor authentication (2FA) backup codes.
 
 ![Test QR Code](test.png)
