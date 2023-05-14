@@ -1,5 +1,4 @@
-![qrpwd logo](./qrpwd-logo.png){: width="250px" height="250px" }
-
+<img src="./qrpwd-logo.png" alt="qrpwd logo" width="250" height="250">
 
 # qrpwd - Encode to QR-Code
 
