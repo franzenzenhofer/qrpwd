@@ -125,3 +125,7 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+!/node_modules/@zxing/library/umd/index.min.js
+!/node_modules/crypto-js/crypto-js.js
+!/node_modules/qrcode-generator/qrcode.js
