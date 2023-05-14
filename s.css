@@ -12,7 +12,7 @@ body {
 /* Set the container styles */
 .container {
   max-width: 600px;
-  margin: 0 auto;
+  margin: 0 auto 20px;
   padding: 20px;
   background-color: #fff;
   border-radius: 10px;
@@ -253,4 +253,24 @@ a:active {
 .message a:hover {
   color: #000000;
   text-decoration: underline;
+}
+
+#install-button {
+  max-width: 600px;
+  background-color: #007aff;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 20px auto;
+  display: block;
+  cursor: pointer;
+}
+
+#install-button:hover {
+  background-color: #0069d9;
+}
+
+#install-button:active {
+  background-color: #005cbf;
 }
