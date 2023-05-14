@@ -242,7 +242,7 @@ a:active {
   color: #000000;
   padding: 10px;
   border-radius: 5px;
-  margin: 20px;
+  margin: 20px auto;
 }
 
 .message a {
