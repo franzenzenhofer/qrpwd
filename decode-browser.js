@@ -26,7 +26,16 @@ async function decodeBrowser(dataUrl, password) {
   }
 }
 
-async function handleDecode() {
+function handleFileSelect() {
+  const inputFile = document.getElementById('input-file').files[0];
+  if (inputFile) {
+    document.getElementById('choose_file').textContent = `Selected file: ${inputFile.name}`;
+  } else {
+    document.getElementById('choose_file').textContent = 'No file selected';
+  }
+}
+
+function handleDecode() {
   const inputFile = document.getElementById('input-file').files[0];
   const password = document.getElementById('password').value;
   const reader = new FileReader();
@@ -36,12 +45,15 @@ async function handleDecode() {
       const decodedData = await decodeBrowser(dataUrl, password);
       document.getElementById('result-filename').textContent = `Filename: ${decodedData.filename}`;
       document.getElementById('result-message').textContent = `Message: ${decodedData.data}`;
+  
     } catch (e) {
       document.getElementById('result-filename').textContent = 'Error decoding the file';
       document.getElementById('result-message').textContent = '';
+      
     }
   };
   reader.readAsDataURL(inputFile);
 }
 
-document.getElementById('input-file').addEventListener('change', handleDecode);
+document.getElementById('input-file').addEventListener('change', handleFileSelect);
+document.getElementById('decode').addEventListener('click', handleDecode);

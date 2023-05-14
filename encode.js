@@ -5,6 +5,15 @@ import { exec } from 'child_process';
 
 export const encode = async (d, pw, o, silent, filename, debug = false) => {
   try {
+
+      // Calculate the maximum number of characters that can be encoded in a QR code
+      const qrVersion = QRCode.qrcode.qrVersions(QRCode.qrcode.QRErrorCorrectLevel.H)[9];
+      const maxDataLength = qrVersion.totalDataCodewords * 8;
+  
+      // Limit the data to encode to 80% of the maximum data length
+      const maxEncodedDataLength = Math.floor(maxDataLength * 0.8);
+      const limitedData = d.slice(0, maxEncodedDataLength);
+      
     const combinedData = JSON.stringify({ data: d, filename });
     const ed = pw ? CryptoJS.AES.encrypt(combinedData, pw).toString() : combinedData;
 

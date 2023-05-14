@@ -17,8 +17,10 @@
     "@nuintun/qrcode": "^3.3.2",
     "@zxing/library": "^0.20.0",
     "crypto-js": "^4.1.1",
+    "file-saver": "^2.0.5",
     "jimp": "^0.22.8",
     "qrcode": "^1.5.3",
+    "qrcode-generator": "^1.4.4",
     "qrcode-reader": "^1.0.4",
     "yargs": "^17.7.2"
   }
