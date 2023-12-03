@@ -79,3 +79,46 @@ Here are some possible use cases for qrpwd:
 - Creating QR codes for loyalty programs that require a password for access.
 - Generating QR codes for surveys or feedback forms that require a password for access.
 
+
+## Local Server Setup for the Web Version
+
+To serve qrpwd-web locally on port 3000:
+
+### Using Python
+
+If you have Python installed, you can start a simple HTTP server.
+
+1. Navigate to the directory containing `index.html`, usually the root qrpwd directory
+2. Run the following command:
+
+   ```bash
+   python -m http.server 3000
+   ```
+
+   For Python 2.x, use:
+
+   ```bash
+   python -m SimpleHTTPServer 3000
+   ```
+
+### Using Node.js
+
+If you prefer Node.js, you can use the `http-server` package.
+
+1. Install `http-server` globally (if not installed):
+
+   ```bash
+   npm install -g http-server
+   ```
+
+2. Navigate to the directory containing `index.html`.
+3. Run the following command:
+
+   ```bash
+   http-server -p 3000
+   ```
+
+The server will start at `http://localhost:3000`. Navigate to this URL in your web browser to view the project.
+
+
+
